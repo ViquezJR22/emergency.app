@@ -1,0 +1,267 @@
+/* Fondo general y fuente */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #000000, #222222, #444444);
+  color: white;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Pantallas internas */
+.screen {
+  display: none;
+  background-color: #222;  /* Fondo oscuro para cada pantalla */
+  border-radius: 15px;
+  padding: 30px 25px;
+  width: 320px;
+  max-width: 90vw;
+  box-sizing: border-box;
+  box-shadow: 0 0 15px rgba(255, 255, 0, 0.7);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* Entradas */
+input {
+  width: 90%;
+  max-width: 280px;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Botones */
+button {
+  background: yellow;
+  color: black;
+  border: none;
+  padding: 12px 20px;
+  margin-top: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background 0.3s ease;
+  width: 90%;
+  max-width: 300px;
+}
+
+button:hover {
+  background: #e6e600;
+}
+
+a {
+  color: yellow;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+/* Header superior en main */
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  font-weight: bold;
+  font-size: 18px;
+  background: transparent;
+  margin-bottom: 15px;
+}
+
+/* Botones reportar y llamar */
+.main-buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 15px 0 25px 0;
+  gap: 20px;
+}
+
+.main-buttons div {
+  text-align: center;
+  color: yellow;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}
+
+.main-buttons img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 5px;
+}
+
+/* Mapa embebido */
+.map-container {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 180px;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  display: block;
+}
+
+/* Botón START */
+.start-button {
+  width: 90%;
+  max-width: 300px;
+  padding: 12px;
+  background-color: yellow;
+  color: black;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background 0.3s ease;
+}
+
+.start-button:hover {
+  background-color: #e6e600;
+}
+
+/* Chat flotante y caja de chat */
+#chatWrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 64px;
+  height: 64px;
+  z-index: 1000;
+}
+
+#chatWrapper > button {
+  background: none;
+  border: none;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  font-size: 36px;
+  cursor: pointer;
+  color: yellow;
+  box-shadow: 0 0 8px yellow;
+}
+
+#chatBox {
+  display: none;
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 260px;
+  height: 280px;
+  background-color: white;
+  color: black;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  font-family: Arial, sans-serif;
+  flex-direction: column;
+  z-index: 1100;
+}
+
+#chatBox h4 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+#chatBox > div:first-of-type {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+#chatInput {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+#sendBtn {
+  margin-top: 10px;
+  background-color: yellow;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+}
+
+#sendBtn:hover {
+  background-color: #e6e600;
+}
+
+#chatMessages {
+  margin-top: 10px;
+  font-size: 13px;
+  overflow-y: auto;
+  flex-grow: 1;
+  border-top: 1px solid #ccc;
+  padding-top: 8px;
+  max-height: 100px;
+  color: #222;
+}
+
+/* Flecha de la caja de chat */
+#chatBox::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 30px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 12px solid white;
+}
+
+/* Responsive para móviles */
+@media (max-width: 450px) {
+  body {
+    height: 100%;
+  }
+  .screen {
+    width: 90vw;
+    min-height: 90vh;
+    padding: 20px;
+  }
+  #chatWrapper {
+    bottom: 80px !important;
+    right: 15px !important;
+  }
+}
+
+/* Focus accesible */
+button:focus,
+input:focus {
+  outline: 2px solid yellow;
+  box-shadow: 0 0 5px yellow;
+}

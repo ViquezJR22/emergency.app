@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EMERGENCY.app</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="welcome" class="screen active">
+    <h1>EMERGENCY.app</h1>
+    <button onclick="goToLogin()">ENTRAR</button>
+  </div>
+
+  <div id="login" class="screen">
+    <h2>INICIAR SESIÓN</h2>
+    <input type="email" placeholder="CORREO" id="loginEmail" />
+    <input type="password" placeholder="CONTRASEÑA" id="loginPassword" />
+    <button onclick="login()">ENTRAR</button>
+    <p>¿NO TIENES CUENTA? <a onclick="showScreen('register')">REGÍSTRATE</a></p>
+  </div>
+
+  <div id="register" class="screen">
+    <h2>CREAR CUENTA</h2>
+    <input type="text" placeholder="NOMBRE" id="regName" />
+    <input type="email" placeholder="CORREO" id="regEmail" />
+    <input type="password" placeholder="CONTRASEÑA" id="regPassword" />
+    <button onclick="register()">REGISTRAR</button>
+    <p>¿YA TIENES CUENTA? <a onclick="showScreen('login')">INICIA SESIÓN</a></p>
+  </div>
+
+  <div id="main" class="screen">
+    <div class="header">
+      <h3>EMERGENCY.app</h3>
+      <div class="menu-icon">☰</div>
+    </div>
+
+    <div class="main-buttons">
+      <div>
+        <img src="https://img.icons8.com/ios-filled/50/FFD700/error.png" alt="Reportar" />
+        <p>REPORTAR</p>
+      </div>
+      <div>
+        <img src="https://img.icons8.com/ios-filled/50/FFD700/phone.png" alt="Llamar" />
+        <p>LLAMAR</p>
+      </div>
+    </div>
+
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.948883603606!2d-122.08424938469253!3d37.42206577982568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb5d3b00c37c3%3A0x11a6057205487bdb!2sGoogleplex!5e0!3m2!1ses!2smx!4v1689594000000!5m2!1ses!2smx"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+
+    <button onclick="goToMap()" class="start-button">START</button>
+
+    <div id="chatWrapper">
+      <button onclick="toggleChat()">🤖</button>
+      <div id="chatBox">
+        <h4>AYUDA MÉDICA</h4>
+        <div>🤖 ¿QUÉ EMERGENCIA MÉDICA TIENES?</div>
+        <input id="chatInput" type="text" placeholder="ESCRIBE AQUÍ..." />
+        <button id="sendBtn">ENVIAR</button>
+        <div id="chatMessages"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
