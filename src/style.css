@@ -1,0 +1,187 @@
+/* Fondo general */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #2c2c2c, #000000);
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+/* Contenedores de pantalla */
+.screen {
+  display: none;
+  padding: 20px;
+  text-align: center;
+}
+
+.screen.active {
+  display: block;
+}
+
+/* Inputs */
+input {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 80%;
+  max-width: 300px;
+  background-color: #222;
+  border: 1px solid #555;
+  color: white;
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: 2px solid #ffcc00;
+  background-color: #333;
+}
+
+/* Botones */
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #e6b800;
+}
+
+/* Links */
+a {
+  color: red;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header con flex para texto e ícono */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: transparent;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  user-select: none;
+  cursor: default;
+}
+
+.menu-icon {
+  font-size: 1.8rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Botones principales REPORTAR y LLAMAR a los extremos */
+.main-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 0 20px;
+  gap: 40px;
+}
+
+/* Cada botón con ícono y texto en línea */
+.main-buttons > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  color: #FFD700;
+  user-select: none;
+  gap: 8px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.main-buttons > div:hover {
+  transform: scale(1.1);
+}
+
+.main-buttons > div img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Mapa */
+.map-container iframe {
+  width: 90%;
+  height: 300px;
+  border: 0;
+  margin: 20px auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Chat */
+#chatWrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+#chatBox {
+  display: none;
+  flex-direction: column;
+  background: #111;
+  border: 1px solid #666;
+  padding: 10px;
+  width: 250px;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 8px;
+}
+
+#chatMessages {
+  text-align: left;
+  margin-top: 10px;
+  max-height: 150px;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+/* Botón START */
+.start-button {
+  margin-top: 20px;
+}
+
+/* Boton ver contraseña*/
+.password-wrapper {
+  position: relative;
+  width: 80%;
+  max-width: 300px;
+  margin: 10px auto; /* para centrar igual que los inputs */
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px; /* espacio para el icono */
+  box-sizing: border-box; /* que el padding no estire el input */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+  font-size: 1.2rem;
+  color: #ffcc00;
+}
