@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EMERGENCY.app</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Pantalla de bienvenida -->
+  <div id="welcome" class="screen active">
+    <h1>🚨 EMERGENCY.app</h1>
+    <button class="toggle-screen" data-target="login">ENTRAR</button>
+  </div>
+
+  <!-- Pantalla de login -->
+  <div id="login" class="screen">
+    <h2>INICIAR SESIÓN</h2>
+    <form id="loginForm">
+      <div class="input-wrapper">
+        <input type="email" placeholder="CORREO" id="loginEmail" required />
+      </div>
+      <div class="input-wrapper password-wrapper">
+        <input type="password" placeholder="CONTRASEÑA" id="loginPassword" required />
+        <span class="toggle-password" data-target="loginPassword">😎</span>
+      </div>
+      <button type="submit">ENTRAR</button>
+    </form>
+    <p>
+      ¿NO TIENES CUENTA? 
+      <a href="#" class="toggle-screen" data-target="register">REGÍSTRATE</a><br />
+      ¿<a href="#" class="toggle-screen" data-target="forgotPassword">OLVIDÉ MI CONTRASEÑA</a>?
+    </p>
+  </div>
+
+  <!-- Pantalla de registro -->
+  <div id="register" class="screen">
+    <h2>CREAR CUENTA</h2>
+    <form id="registerForm">
+      <div class="input-wrapper">
+        <input type="text" placeholder="NOMBRE" id="regName" required />
+      </div>
+      <div class="input-wrapper">
+        <input type="email" placeholder="CORREO" id="regEmail" required />
+      </div>
+      <div class="input-wrapper password-wrapper">
+        <input type="password" placeholder="CONTRASEÑA" id="regPassword" required />
+        <span class="toggle-password" data-target="regPassword">🫡</span>
+      </div>
+      <div class="input-wrapper">
+        <select id="regSecurityQuestion" required>
+          <option value="">SELECCIONA UNA PREGUNTA DE SEGURIDAD</option>
+          <option value="¿Cuál es el nombre de tu primera mascota?">¿Cuál es el nombre de tu primera mascota?</option>
+          <option value="¿Cuál es tu comida favorita?">¿Cuál es tu comida favorita?</option>
+          <option value="¿En qué ciudad naciste?">¿En qué ciudad naciste?</option>
+        </select>
+      </div>
+      <div class="input-wrapper">
+        <input type="text" placeholder="RESPUESTA DE SEGURIDAD" id="regSecurityAnswer" required />
+      </div>
+      <button type="submit">REGISTRAR</button>
+    </form>
+    <p>¿YA TIENES CUENTA? <a href="#" class="toggle-screen" data-target="login">INICIA SESIÓN</a></p>
+  </div>
+
+  <!-- Pantalla "Olvidé mi contraseña" -->
+  <div id="forgotPassword" class="screen">
+    <h2>OLVIDÉ MI CONTRASEÑA</h2>
+    <form id="forgotForm">
+      <div class="input-wrapper">
+        <input type="email" placeholder="CORREO" id="forgotEmail" required />
+      </div>
+      <button type="button" id="checkSecurityBtn">SIGUIENTE</button>
+    </form>
+
+    <div id="securityQuestionSection" class="input-wrapper" style="display:none;">
+      <p id="displaySecurityQuestion"></p>
+      <input type="text" placeholder="RESPUESTA" id="forgotAnswer" />
+      <button type="button" id="resetPasswordBtn">RESTABLECER CONTRASEÑA</button>
+    </div>
+
+    <p><a href="#" class="toggle-screen" data-target="login">Regresar a iniciar sesión</a></p>
+  </div>
+
+  <!-- Pantalla principal -->
+  <div id="main" class="screen">
+    
+   <!-- Top Bar -->
+<div class="top-bar">
+  <div class="menu-icon" id="menuIcon">☰</div>
+  <div class="action-buttons"></div>
+</div>
+
+<!-- Panel de usuario oculto inicialmente -->
+<div class="user-panel" id="userPanel">
+  <div class="user-info">
+    <div class="user-avatar">
+      <img id="avatarImage" src="default-avatar.png" alt="Avatar">
+    </div>
+    <h3 id="username">Nombre del Usuario</h3>
+  </div>
+  <div class="user-actions">
+    <button id="changePhoto">Cambiar Foto de Perfil</button>
+    <button id="changeLanguage">Cambiar Idioma</button>
+    <button id="switchAccount">Cambiar de Cuenta</button>
+    <button id="logout">Cerrar Sesión</button>
+    <button id="goHome">Ir a Inicio</button>
+  </div>
+</div>
+
+<input type="file" id="fileInput" style="display:none">
+
+    <!-- Botones principales -->
+    <div class="main-buttons">
+      <div onclick="showReport()">
+        <img src="https://img.icons8.com/ios-filled/50/FFD700/error.png" alt="Reportar" />
+        <p>REPORTAR</p>
+      </div>
+
+      <div onclick="showContactsModal()">
+        <img src="https://img.icons8.com/ios-filled/50/FFD700/phone.png" alt="Llamar" />
+        <p>LLAMAR</p>
+      </div>
+    </div>
+
+    <!-- Mapa -->
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.948883603606!2d-122.08424938469253!3d37.42206577982568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb5d3b00c37c3%3A0x11a6057205487bdb!2sGoogleplex!5e0!3m2!1ses!2smx!4v1689594000000!5m2!1ses!2smx"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+
+    <!-- Botones de acción -->
+    <button onclick="goToMap()" class="start-button">START</button>
+    <button onclick="logout()">CERRAR SESIÓN</button>
+
+    <!-- Chat -->
+    <div id="chatWrapper">
+      <button id="toggleChatBtn">🤖</button>
+      <div id="chatBox">
+        <h4>AYUDA MÉDICA</h4>
+        <div id="chatIntro">🤖 ¿QUÉ EMERGENCIA MÉDICA TIENES?</div>
+        <input id="chatInput" type="text" placeholder="ESCRIBE AQUÍ..." />
+        <button id="sendBtn">ENVIAR</button>
+        <div id="chatMessages"></div>
+      </div>
+    </div>
+
+    <!-- Modal de Reporte -->
+    <div id="reportModal" class="modal" style="display:none;">
+      <div class="modal-content report-content">
+        <header class="topbar">
+          <div class="brand-wrap">
+            <div class="logo" aria-label="alerta">
+              <svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true">
+                <path d="M32 6L3 58h58L32 6z" fill="#ffd60a" />
+                <path d="M32 6L3 58h58L32 6z" fill="none" stroke="#111" stroke-width="3"/>
+                <rect x="29" y="22" width="6" height="18" rx="2" fill="#111"/>
+                <circle cx="32" cy="47" r="3" fill="#111"/>
+              </svg>
+            </div>
+            <div class="brand">
+              <div class="title">EMERGENCY. app</div>
+              <div class="title-dots"></div>
+            </div>
+          </div>
+          <button class="close-btn" onclick="closeReportModal()">✖</button>
+        </header>
+
+        <main class="content">
+          <label class="lbl">Reporte</label>
+
+          <label class="upload-box" id="uploadBox">
+            <input type="file" id="fileInput" accept="image/*" hidden>
+            <div class="upload-inner" id="uploadInner">
+              <div class="plus-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22">
+                  <circle cx="12" cy="12" r="11" fill="#ff6b6b"/>
+                  <path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="upload-text">INSERT IMAGEN</div>
+            </div>
+          </label>
+
+          <section class="panel">
+            <button class="btn btn-primary wide svc-btn">POLICIA</button>
+            <button class="btn btn-primary wide svc-btn">Bomberos</button>
+            <button class="btn btn-primary wide svc-btn">Cruz Roja</button>
+            <button class="btn btn-primary wide svc-btn">ICE</button>
+            <button class="btn btn-primary small" id="btnAceptar">ACEPTAR</button>
+          </section>
+        </main>
+      </div>
+    </div>
+    <!-- Modal de contactos -->
+    <div id="contactsModal">
+      <div class="modal-content">
+        <h3>Contactos de Emergencia</h3>
+        <div class="contacts-grid" id="contactsGrid">
+          <button onclick="callNumber('911')"><span class="icon">🚓</span>Policía / Emergencias</button>
+          <button onclick="callNumber('065')"><span class="icon">🔥</span>Bomberos</button>
+          <button onclick="callNumber('131')"><span class="icon">❤️</span>Cruz Roja</button>
+          <button onclick="callNumber('132')"><span class="icon">❄️</span>ICE</button>
+          <button onclick="callNumber('999')" style="background-color: #ff9800;"><span class="icon">⭐</span>Alta Prioridad</button>
+          <button onclick="addContact()">➕ Agregar</button>
+        </div>
+        <div class="contacts-grid" id="highPriorityGrid" style="display:none; margin-top:10px;"></div>
+        <button class="close-btn" onclick="closeContactsModal()">Cancelar</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.10.0/localforage.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
